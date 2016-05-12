@@ -14,7 +14,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
     var manager : CLLocationManager!
-    var location : Location!
     
     //
     //  initial setup
@@ -24,6 +23,19 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         super.viewDidLoad()
         
         self.currentLocation()
+        
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if let data = defaults.objectForKey("lastPark") as? NSData {
+            
+            let park = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! Park
+            let pin = MapPin(coordinate: park.location.coordinate, title: park.name, subtitle: park.description)
+            
+            mapView.addAnnotation(pin)
+            
+        }
+
    
     }
     
@@ -99,13 +111,15 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     //
     func okAction(act:UIAlertController!) {
         
-        let location = Location(name: act.textFields![0].text, desc: act.textFields![1].text)
-        let loc2 = Location()
+        let park = Park()
+        park.name = act.textFields![0].text
+        park.desc = act.textFields![1].text
+        park.location = mapView.userLocation.location
         
         let defaults = NSUserDefaults.standardUserDefaults()
-        let data:NSData = NSKeyedArchiver.archivedDataWithRootObject(location!)
+        let data:NSData = NSKeyedArchiver.archivedDataWithRootObject(park)
         
-        defaults.setObject(data, forKey: "lastLocation")
+        defaults.setObject(data, forKey: "lastPark")
         
     }
     

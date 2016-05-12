@@ -7,18 +7,21 @@
 //
 
 import UIKit
+import MapKit
 
-class Location: NSObject, NSCoding {
+class Park: NSObject, NSCoding {
     
     
     struct PropertyKey {
         
         static let nameKey = "name"
         static let descriptionKey = "descrption"
+        static let locationKey = "location"
     }
     
     var name: String!
     var desc: String!
+    var location: CLLocation!
     
     //
     //  serialize the object
@@ -27,6 +30,7 @@ class Location: NSObject, NSCoding {
         
         aCoder.encodeObject(name, forKey: PropertyKey.nameKey)
         aCoder.encodeObject(desc, forKey: PropertyKey.descriptionKey)
+        aCoder.encodeObject(location, forKey: PropertyKey.locationKey)
         
     }
     
@@ -35,24 +39,12 @@ class Location: NSObject, NSCoding {
     //
     required convenience init?(coder aDecoder: NSCoder) {
         
-        let name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
-        let desc = aDecoder.decodeObjectForKey(PropertyKey.descriptionKey) as? String
+        self.init()
         
-        self.init(name: name, desc: desc)
-        
-    }
-    
-    
-    //
-    //  init a new object
-    //
-    init?(name: String!, desc: String!) {
-        
-        self.name = name
-        self.desc = desc
-        
-        super.init()
+        self.name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
+        self.desc = aDecoder.decodeObjectForKey(PropertyKey.descriptionKey) as? String
+        self.location = aDecoder.decodeObjectForKey(PropertyKey.locationKey) as? CLLocation
         
     }
-    
+
 }
