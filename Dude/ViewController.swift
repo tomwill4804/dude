@@ -14,10 +14,24 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
     var manager : CLLocationManager!
+    var location : Location!
     
+    //
+    //  initial setup
+    //
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        self.currentLocation()
+   
+    }
+    
+    
+    //
+    //  get the users current location
+    //
+    func currentLocation(){
         
         manager = CLLocationManager()
         manager.delegate = self
@@ -26,11 +40,12 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.startUpdatingLocation()
         
-        
-
     }
     
     
+    //
+    //  update current location on the map
+    //
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations.last
@@ -43,18 +58,24 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     
+    //
+    //  user wants to mark there current location
+    //
     @IBAction func dropPin(sender: AnyObject) {
         
-        let alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .Alert)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
-            print(action)
-        }
+        //
+        //  prompt the user for title and description
+        //
+        let alertController = UIAlertController(title: "PIN Location", message: "Enter location description", preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         alertController.addAction(cancelAction)
         
         let okAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-            print(action)
+            self.okAction(alertController)
         }
+        
         alertController.addAction(okAction)
         
         alertController.addTextFieldWithConfigurationHandler { (textField) in
@@ -72,6 +93,23 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
         
     }
+    
+    //
+    //  user pushed ok on pin prompt
+    //
+    func okAction(act:UIAlertController!) {
+        
+        let location = Location(name: act.textFields![0].text, desc: act.textFields![1].text)
+        let loc2 = Location()
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let data:NSData = NSKeyedArchiver.archivedDataWithRootObject(location!)
+        
+        defaults.setObject(data, forKey: "lastLocation")
+        
+    }
+    
+ 
 
 
 }
