@@ -9,8 +9,6 @@
 import UIKit
 
 class ParksTableViewController: UITableViewController {
-    
-    var parks : [Park]!
 
     override func viewDidLoad() {
         
