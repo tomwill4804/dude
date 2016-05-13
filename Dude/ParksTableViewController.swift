@@ -13,7 +13,7 @@ class ParksTableViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem()
 
     }
 

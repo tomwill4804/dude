@@ -21,6 +21,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.title = "Parking Locations"
         
         self.currentLocation()
         
