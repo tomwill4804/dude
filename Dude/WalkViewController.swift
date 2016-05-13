@@ -53,17 +53,12 @@ class WalkViewController: UIViewController,CLLocationManagerDelegate {
     //
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        let location = locations.last
-        
-        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        
         //
         //  see if we have a new starting location
         //
         if startLocation == nil {
             
-            //mapView.setRegion(region, animated: true)
+            let location = locations.last
             startLocation = location
             
             let pin = MapPin(coordinate: startLocation!.coordinate, title: "Starting", subtitle: "")
