@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class ParkCell: UITableViewCell {
 
@@ -15,6 +16,7 @@ class ParkCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var picture: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     
     
     override func awakeFromNib() {
@@ -29,7 +31,7 @@ class ParkCell: UITableViewCell {
     //
     //  build the cell
     //
-    func configure(park : Park) {
+    func configure(park : Park, startLocation : CLLocation?) {
         
         nameLabel.text = park.name
         descLabel.text = park.desc
@@ -40,6 +42,14 @@ class ParkCell: UITableViewCell {
         
         picture.image = park.image
         addressLabel.text = park.address
+        
+        if (startLocation != nil && park.location != nil) {
+            let distanceMeters = startLocation!.distanceFromLocation(park.location!)
+            var distanceKM = distanceMeters / 1000
+            distanceKM = round(100*distanceKM/100)
+            distanceLabel.text = "\(distanceKM) KM away"
+            
+        }
         
     }
     

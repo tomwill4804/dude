@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import MapKit
+
 
 class ParksTableViewController: UITableViewController {
+    
+    var startLocation : CLLocation?
 
     override func viewDidLoad() {
         
@@ -54,7 +58,7 @@ class ParksTableViewController: UITableViewController {
         let parkCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ParkCell
         
         let park = parks[indexPath.row] as Park
-        parkCell.configure(park)
+        parkCell.configure(park, startLocation: startLocation)
         return parkCell
         
     }

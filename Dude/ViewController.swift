@@ -75,6 +75,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "showParks" {
+            let vc = segue.destinationViewController as! ParksTableViewController
+            vc.startLocation = lastLocation
         }
     }
     

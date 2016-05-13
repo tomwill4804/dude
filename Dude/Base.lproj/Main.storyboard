@@ -41,7 +41,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="List" id="okY-nX-ccz">
                             <connections>
-                                <segue destination="O0U-xc-GWm" kind="show" id="Lco-nl-Lfh"/>
+                                <segue destination="O0U-xc-GWm" kind="show" identifier="showParks" id="Lco-nl-Lfh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -66,7 +66,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Chh-hU-RVO" id="QrL-nB-WVb">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="299.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAU-yT-92P">
@@ -118,11 +118,21 @@
                                                 <segue destination="NHi-hc-avn" kind="show" identifier="showWalk" id="JBr-Tb-VBF"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0VE-xa-DQd">
+                                            <rect key="frame" x="443" y="198" width="149" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="2sk-EA-SwK"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="gAU-yT-92P" firstAttribute="leading" secondItem="QrL-nB-WVb" secondAttribute="leadingMargin" id="5qj-u1-6LB"/>
                                         <constraint firstItem="4p1-Hm-G6t" firstAttribute="trailing" secondItem="QrL-nB-WVb" secondAttribute="trailingMargin" id="6OB-SH-Cm0"/>
                                         <constraint firstItem="gAU-yT-92P" firstAttribute="top" secondItem="QrL-nB-WVb" secondAttribute="top" id="7LA-gv-PT7"/>
+                                        <constraint firstItem="0VE-xa-DQd" firstAttribute="trailing" secondItem="23w-AV-d9Q" secondAttribute="trailing" id="Au7-JL-QGW"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="nUV-ml-TQR" secondAttribute="bottom" constant="-0.5" id="BhF-ZK-Bjm"/>
                                         <constraint firstItem="23w-AV-d9Q" firstAttribute="leading" secondItem="kqS-gE-j8t" secondAttribute="leading" constant="3" id="CNV-Ph-cU1"/>
                                         <constraint firstItem="4p1-Hm-G6t" firstAttribute="leading" secondItem="23w-AV-d9Q" secondAttribute="leading" id="K6w-3v-2Cr"/>
@@ -134,9 +144,11 @@
                                         <constraint firstItem="4p1-Hm-G6t" firstAttribute="trailing" secondItem="23w-AV-d9Q" secondAttribute="trailing" id="cX3-KS-zfi"/>
                                         <constraint firstItem="gAU-yT-92P" firstAttribute="leading" secondItem="J8i-cU-dCd" secondAttribute="leading" id="g4H-dN-Vgm"/>
                                         <constraint firstItem="4p1-Hm-G6t" firstAttribute="leading" secondItem="nUV-ml-TQR" secondAttribute="trailing" constant="8" symbolic="YES" id="lU4-Gl-igG"/>
+                                        <constraint firstItem="kqS-gE-j8t" firstAttribute="top" secondItem="0VE-xa-DQd" secondAttribute="bottom" constant="43" id="mfP-qc-dAs"/>
                                         <constraint firstItem="J8i-cU-dCd" firstAttribute="top" secondItem="QrL-nB-WVb" secondAttribute="topMargin" constant="14" id="nag-KV-NvK"/>
                                         <constraint firstItem="gAU-yT-92P" firstAttribute="trailing" secondItem="J8i-cU-dCd" secondAttribute="trailing" id="tQK-YU-1GP"/>
                                         <constraint firstItem="nUV-ml-TQR" firstAttribute="top" secondItem="gAU-yT-92P" secondAttribute="bottom" constant="16" id="vkI-zm-iev"/>
+                                        <constraint firstItem="0VE-xa-DQd" firstAttribute="leading" secondItem="23w-AV-d9Q" secondAttribute="leading" id="wUW-Pu-ad5"/>
                                         <constraint firstItem="4p1-Hm-G6t" firstAttribute="top" secondItem="QrL-nB-WVb" secondAttribute="topMargin" constant="33" id="z0j-f1-svO"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -144,6 +156,7 @@
                                     <outlet property="addressLabel" destination="23w-AV-d9Q" id="wvU-jh-P6B"/>
                                     <outlet property="dateLabel" destination="4p1-Hm-G6t" id="zO7-wx-ymK"/>
                                     <outlet property="descLabel" destination="J8i-cU-dCd" id="TSD-NR-ij8"/>
+                                    <outlet property="distanceLabel" destination="0VE-xa-DQd" id="LGr-KT-2OT"/>
                                     <outlet property="nameLabel" destination="gAU-yT-92P" id="1xs-3H-MLP"/>
                                     <outlet property="picture" destination="nUV-ml-TQR" id="sfS-PK-CAk"/>
                                 </connections>
