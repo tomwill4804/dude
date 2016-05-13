@@ -25,15 +25,12 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         
         self.currentLocation()
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        
-        if let data = defaults.objectForKey("lastPark") as? NSData {
-            
-            let park = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! Park
+        //
+        //  annotate the last saved pin
+        //
+        if let park = parks.last {
             let pin = MapPin(coordinate: park.location.coordinate, title: park.name, subtitle: park.description)
-            
             mapView.addAnnotation(pin)
-            
         }
 
    
@@ -131,16 +128,44 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     //
     func okAction(act:UIAlertController!) {
         
-        let park = Park()
-        park.name = act.textFields![0].text
-        park.desc = act.textFields![1].text
-        park.location = mapView.userLocation.location
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let data:NSData = NSKeyedArchiver.archivedDataWithRootObject(park)
-        
-        defaults.setObject(data, forKey: "lastPark")
-        parks.append(park)
+        if !act.textFields![0].text!.isEmpty {
+            
+            //
+            //  create new Park object
+            //
+            let park = Park()
+            park.name = act.textFields![0].text
+            park.desc = act.textFields![1].text
+            park.location = mapView.userLocation.location
+            
+            //
+            //  mark the spot on the map
+            //
+            let pin = MapPin(coordinate: park.location.coordinate, title: park.name, subtitle: park.description)
+            mapView.addAnnotation(pin)
+            
+            
+            //
+            //  take snapshot of map (image)
+            //
+            let options = MKMapSnapshotOptions.init()
+            options.region = mapView.region
+            options.scale = UIScreen.mainScreen().scale
+            options.size = CGSizeMake(300, 168)
+            
+            let snapshotter = MKMapSnapshotter.init(options: options)
+            snapshotter.startWithCompletionHandler() {
+                snapshot, error in
+                
+                park.image = snapshot!.image
+                
+            }
+            
+            //
+            //  save park in array
+            //
+            parks.append(park)
+        }
         
     }
     

@@ -39,11 +39,11 @@ class ParksTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let parkCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ParkCell
         
-        let object = parks[indexPath.row]
-        cell.textLabel!.text = object.name
-        return cell
+        let park = parks[indexPath.row] as Park
+        parkCell.configure(park)
+        return parkCell
         
     }
     
