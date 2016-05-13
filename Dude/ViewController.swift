@@ -137,6 +137,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             park.name = act.textFields![0].text
             park.desc = act.textFields![1].text
             park.location = mapView.userLocation.location
+            park.date = NSDate()
             
             //
             //  mark the spot on the map
@@ -160,6 +161,18 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                 park.image = snapshot!.image
                 
             }
+            
+            //
+            //  get address of location
+            //
+            CLGeocoder().reverseGeocodeLocation(park.location, completionHandler: {(placemarks, error) -> Void in
+                
+                if placemarks!.count > 0 {
+                    let pm = placemarks![0] 
+                    park.address = pm.locality
+                }
+            
+            })
             
             //
             //  save park in array
