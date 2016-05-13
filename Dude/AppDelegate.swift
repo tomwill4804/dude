@@ -19,7 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
+        
+        //
+        //  read back our data and build Park objects
+        //
         if let array = NSKeyedUnarchiver.unarchiveObjectWithFile(fPath("parks.txt")) {
             parks = array as! [Park]
         }
@@ -53,12 +56,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    //
+    //  save our data
+    //
     func saveData() {
     
         NSKeyedArchiver.archiveRootObject(parks, toFile: fPath("parks.txt"))
         
     }
     
+    //
+    //  return file path for saving data
+    //
     func fPath(file: String) -> String{
        
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask,true)
