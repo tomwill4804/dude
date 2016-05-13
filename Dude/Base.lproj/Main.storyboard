@@ -172,17 +172,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PPj-kR-bl0">
-                                <rect key="frame" x="-5" y="64" width="605" height="536"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PPj-kR-bl0">
+                                <rect key="frame" x="-5" y="64" width="605" height="470"/>
                                 <connections>
                                     <outlet property="delegate" destination="NHi-hc-avn" id="gr4-qC-0KU"/>
                                 </connections>
                             </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krj-fD-ajf">
+                                <rect key="frame" x="20" y="559" width="425" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="6JN-L4-YMd"/>
+                                    <constraint firstAttribute="width" constant="425" id="t4A-Sd-q2W"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PPj-kR-bl0" firstAttribute="leading" secondItem="0VA-f4-oBF" secondAttribute="leadingMargin" constant="-25" id="9TN-3x-unp"/>
+                            <constraint firstItem="Krj-fD-ajf" firstAttribute="leading" secondItem="0VA-f4-oBF" secondAttribute="leadingMargin" id="DcP-2J-dci"/>
+                            <constraint firstItem="Krj-fD-ajf" firstAttribute="top" secondItem="PPj-kR-bl0" secondAttribute="bottom" constant="25" id="Trw-yL-VXB"/>
+                            <constraint firstAttribute="bottom" secondItem="Krj-fD-ajf" secondAttribute="bottom" constant="20" symbolic="YES" id="gCt-iD-RoI"/>
+                            <constraint firstItem="PPj-kR-bl0" firstAttribute="top" secondItem="vFD-OY-fu9" secondAttribute="bottom" id="oWZ-NX-OMl"/>
+                            <constraint firstAttribute="trailing" secondItem="PPj-kR-bl0" secondAttribute="trailing" id="sv9-hl-O0n"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="PPj-kR-bl0" id="J9A-Hy-iDy"/>
+                        <outlet property="textLabel" destination="Krj-fD-ajf" id="fH8-rq-WeB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Eb-GB-fGR" userLabel="First Responder" sceneMemberID="firstResponder"/>

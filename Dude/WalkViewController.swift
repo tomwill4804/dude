@@ -12,6 +12,7 @@ import MapKit
 class WalkViewController: UIViewController,CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var textLabel: UILabel!
     
     private var manager : CLLocationManager!
     private var startLocation : CLLocation?
@@ -57,24 +58,52 @@ class WalkViewController: UIViewController,CLLocationManagerDelegate {
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
-        mapView.setRegion(region, animated: true)
-        
         //
         //  see if we have a new starting location
         //
         if startLocation == nil {
+            
+            //mapView.setRegion(region, animated: true)
             startLocation = location
+            
             let pin = MapPin(coordinate: startLocation!.coordinate, title: "Starting", subtitle: "")
             mapView.addAnnotation(pin)
+            
             self.directions(startLocation!, secondLoc: park.location!)
+            self.zoom(startLocation!, secondLoc: park.location!)
+            
         }
         
     }
     
+    //
+    //  zoom to two locations on a map
+    //
+    func zoom(firstLoc : CLLocation, secondLoc : CLLocation) {
+        
+        let lat = (firstLoc.coordinate.latitude + secondLoc.coordinate.latitude) / 2
+        
+        let longitude = (firstLoc.coordinate.longitude + secondLoc.coordinate.longitude) / 2
+        
+        
+        let distance = firstLoc.distanceFromLocation(secondLoc)
+        let centerLocation = CLLocation.init(latitude: lat, longitude: longitude)
+        
+        if CLLocationCoordinate2DIsValid(centerLocation.coordinate) {
+            let region = MKCoordinateRegionMakeWithDistance(centerLocation.coordinate, distance, distance)
+            self.mapView.setRegion(region, animated: true)
+        }
+    }
+
+    
+    
+    //
+    //  generate dicection between two points
+    //
     func directions(firstLoc : CLLocation, secondLoc : CLLocation) {
         
         //
-        //  generate directions from two points
+        //  build two placemarks
         //
         
         let request = MKDirectionsRequest()
@@ -89,6 +118,10 @@ class WalkViewController: UIViewController,CLLocationManagerDelegate {
         request.transportType = .Walking
         let directions = MKDirections.init(request: request)
         
+        
+        //
+        //  start generating the directions
+        //
         directions.calculateDirectionsWithCompletionHandler ({
             (response: MKDirectionsResponse?, error: NSError?) in
             if error != nil {
@@ -97,7 +130,7 @@ class WalkViewController: UIViewController,CLLocationManagerDelegate {
                 
                 let route = response!.routes[0]
                 let distance = route.distance * 0.000621371192;
-                //Self.messageLabel.text = [NSString stringWithFormat:@"Walk is %g miles", distance];
+                self.textLabel.text = "Walk is \(distance) miles"
                 
                 self.showRoutes(response!)
             }
