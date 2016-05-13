@@ -27,7 +27,7 @@ class ParkCell: UITableViewCell {
     }
     
     //
-    //  build the cell]
+    //  build the cell
     //
     func configure(park : Park) {
         
@@ -36,7 +36,7 @@ class ParkCell: UITableViewCell {
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "MMM dd yyyy HH:MM"
-        dateLabel.text = dateFormatter.stringFromDate(park.date)
+        dateLabel.text = dateFormatter.stringFromDate(park.date!)
         
         picture.image = park.image
         addressLabel.text = park.address

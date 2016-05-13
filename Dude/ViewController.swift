@@ -29,10 +29,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         //  annotate the last saved pin
         //
         if let park = parks.last {
-            let pin = MapPin(coordinate: park.location.coordinate, title: park.name, subtitle: park.desc)
-            mapView.addAnnotation(pin)
+            self.markOnMap(park)
         }
-
    
     }
     
@@ -142,9 +140,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             //
             //  mark the spot on the map
             //
-            let pin = MapPin(coordinate: park.location.coordinate, title: park.name, subtitle: park.desc)
-            mapView.addAnnotation(pin)
-            
+            self.markOnMap(park)
             
             //
             //  take snapshot of map (image)
@@ -165,7 +161,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             //
             //  get address of location
             //
-            CLGeocoder().reverseGeocodeLocation(park.location, completionHandler: {(placemarks, error) -> Void in
+            CLGeocoder().reverseGeocodeLocation(park.location!, completionHandler: {(placemarks, error) -> Void in
                 
                 if placemarks!.count > 0 {
                     let pm = placemarks![0] 
@@ -180,6 +176,13 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             parks.append(park)
         }
         
+    }
+    
+    func markOnMap(park:Park) {
+    
+        let pin = MapPin(coordinate: park.location!.coordinate, title: park.name, subtitle: park.desc)
+        mapView.addAnnotation(pin)
+    
     }
     
  

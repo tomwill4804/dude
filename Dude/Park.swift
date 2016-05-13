@@ -25,12 +25,12 @@ class Park: NSObject, NSCoding {
     //
     //  properties
     //
-    var name: String! = ""
-    var desc: String! = ""
-    var location: CLLocation!
-    var image: UIImage!
-    var date: NSDate!
-    var address: String! = ""
+    var name: String? = ""
+    var desc: String? = ""
+    var location: CLLocation?
+    var image: UIImage?
+    var date: NSDate?
+    var address: String? = ""
     
     //
     //  serialize the object
@@ -53,7 +53,7 @@ class Park: NSObject, NSCoding {
         
         self.init()
         
-        name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
+        name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as? String
         desc = aDecoder.decodeObjectForKey(PropertyKey.descriptionKey) as? String
         location = aDecoder.decodeObjectForKey(PropertyKey.locationKey) as? CLLocation
         image = aDecoder.decodeObjectForKey(PropertyKey.imageKey) as? UIImage
