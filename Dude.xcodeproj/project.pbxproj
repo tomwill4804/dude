@@ -10,6 +10,8 @@
 		E38A72C21CE53553006F7047 /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38A72C11CE53553006F7047 /* MapPin.swift */; };
 		E38A72C41CE55348006F7047 /* ParksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38A72C31CE55348006F7047 /* ParksTableViewController.swift */; };
 		E38A72E61CE58161006F7047 /* ParkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38A72E51CE58161006F7047 /* ParkCell.swift */; };
+		E38A72E81CE63354006F7047 /* WalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38A72E71CE63354006F7047 /* WalkViewController.swift */; };
+		E38A72EA1CE642B1006F7047 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E38A72E91CE642B1006F7047 /* MapKit.framework */; };
 		E3C0B9281CE50A3A00379A41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C0B9271CE50A3A00379A41 /* AppDelegate.swift */; };
 		E3C0B92A1CE50A3A00379A41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C0B9291CE50A3A00379A41 /* ViewController.swift */; };
 		E3C0B92D1CE50A3A00379A41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3C0B92B1CE50A3A00379A41 /* Main.storyboard */; };
@@ -22,6 +24,8 @@
 		E38A72C11CE53553006F7047 /* MapPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
 		E38A72C31CE55348006F7047 /* ParksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParksTableViewController.swift; sourceTree = "<group>"; };
 		E38A72E51CE58161006F7047 /* ParkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkCell.swift; sourceTree = "<group>"; };
+		E38A72E71CE63354006F7047 /* WalkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkViewController.swift; sourceTree = "<group>"; };
+		E38A72E91CE642B1006F7047 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E3C0B9241CE50A3A00379A41 /* Dude.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dude.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3C0B9271CE50A3A00379A41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3C0B9291CE50A3A00379A41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E38A72EA1CE642B1006F7047 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +51,7 @@
 		E3C0B91B1CE50A3A00379A41 = {
 			isa = PBXGroup;
 			children = (
+				E38A72E91CE642B1006F7047 /* MapKit.framework */,
 				E3C0B9261CE50A3A00379A41 /* Dude */,
 				E3C0B9251CE50A3A00379A41 /* Products */,
 			);
@@ -64,6 +70,7 @@
 			children = (
 				E38A72C11CE53553006F7047 /* MapPin.swift */,
 				E3C0B93F1CE5263B00379A41 /* Park.swift */,
+				E38A72E71CE63354006F7047 /* WalkViewController.swift */,
 				E38A72E51CE58161006F7047 /* ParkCell.swift */,
 				E38A72C31CE55348006F7047 /* ParksTableViewController.swift */,
 				E3C0B9291CE50A3A00379A41 /* ViewController.swift */,
@@ -108,6 +115,11 @@
 				TargetAttributes = {
 					E3C0B9231CE50A3A00379A41 = {
 						CreatedOnToolsVersion = 7.3;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -153,6 +165,7 @@
 				E3C0B9281CE50A3A00379A41 /* AppDelegate.swift in Sources */,
 				E38A72C41CE55348006F7047 /* ParksTableViewController.swift in Sources */,
 				E38A72E61CE58161006F7047 /* ParkCell.swift in Sources */,
+				E38A72E81CE63354006F7047 /* WalkViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

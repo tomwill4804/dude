@@ -16,12 +16,24 @@ class ParksTableViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
 
     }
-
-    override func didReceiveMemoryWarning() {
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        super.didReceiveMemoryWarning()
-        
+        if segue.identifier == "showWalk" {
+            let vc = segue.destinationViewController as! WalkViewController
+            
+            let button = sender as! UIButton
+            let view = button.superview!
+            let cell = view.superview as! ParkCell
+            
+            let indexPath = tableView.indexPathForCell(cell)
+            let park = parks[(indexPath?.row)!]
+            vc.park = park
+            
+        }
     }
+
+
 
     // MARK: - Table View
     
