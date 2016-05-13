@@ -66,7 +66,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Chh-hU-RVO" id="QrL-nB-WVb">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="299.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAU-yT-92P">
@@ -109,11 +109,11 @@
                                             <rect key="frame" x="8" y="41" width="427" height="251"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqS-gE-j8t">
-                                            <rect key="frame" x="443" y="262" width="65" height="30"/>
+                                            <rect key="frame" x="440" y="262" width="121" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="65" id="rXI-Tc-bQF"/>
+                                                <constraint firstAttribute="width" constant="121" id="rXI-Tc-bQF"/>
                                             </constraints>
-                                            <state key="normal" title="Walk"/>
+                                            <state key="normal" title="Walk Back"/>
                                             <connections>
                                                 <segue destination="NHi-hc-avn" kind="show" identifier="showWalk" id="JBr-Tb-VBF"/>
                                             </connections>
@@ -124,12 +124,12 @@
                                         <constraint firstItem="4p1-Hm-G6t" firstAttribute="trailing" secondItem="QrL-nB-WVb" secondAttribute="trailingMargin" id="6OB-SH-Cm0"/>
                                         <constraint firstItem="gAU-yT-92P" firstAttribute="top" secondItem="QrL-nB-WVb" secondAttribute="top" id="7LA-gv-PT7"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="nUV-ml-TQR" secondAttribute="bottom" constant="-0.5" id="BhF-ZK-Bjm"/>
-                                        <constraint firstItem="23w-AV-d9Q" firstAttribute="leading" secondItem="kqS-gE-j8t" secondAttribute="leading" id="CNV-Ph-cU1"/>
+                                        <constraint firstItem="23w-AV-d9Q" firstAttribute="leading" secondItem="kqS-gE-j8t" secondAttribute="leading" constant="3" id="CNV-Ph-cU1"/>
                                         <constraint firstItem="4p1-Hm-G6t" firstAttribute="leading" secondItem="23w-AV-d9Q" secondAttribute="leading" id="K6w-3v-2Cr"/>
                                         <constraint firstItem="J8i-cU-dCd" firstAttribute="leading" secondItem="nUV-ml-TQR" secondAttribute="leading" id="KU5-fg-LYE"/>
                                         <constraint firstItem="nUV-ml-TQR" firstAttribute="bottom" secondItem="kqS-gE-j8t" secondAttribute="bottom" id="Ukp-y6-CA0"/>
                                         <constraint firstItem="23w-AV-d9Q" firstAttribute="top" secondItem="4p1-Hm-G6t" secondAttribute="bottom" constant="44" id="UpU-Mn-xd7"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="kqS-gE-j8t" secondAttribute="trailing" constant="84" id="ZkD-AJ-LyJ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="kqS-gE-j8t" secondAttribute="trailing" constant="31" id="ZkD-AJ-LyJ"/>
                                         <constraint firstItem="nUV-ml-TQR" firstAttribute="top" secondItem="4p1-Hm-G6t" secondAttribute="top" id="Zov-DV-h8b"/>
                                         <constraint firstItem="4p1-Hm-G6t" firstAttribute="trailing" secondItem="23w-AV-d9Q" secondAttribute="trailing" id="cX3-KS-zfi"/>
                                         <constraint firstItem="gAU-yT-92P" firstAttribute="leading" secondItem="J8i-cU-dCd" secondAttribute="leading" id="g4H-dN-Vgm"/>

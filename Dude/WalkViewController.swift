@@ -25,6 +25,7 @@ class WalkViewController: UIViewController,CLLocationManagerDelegate {
         
         super.viewDidLoad()
         
+        self.title = park.name
         self.currentLocation()
 
     }

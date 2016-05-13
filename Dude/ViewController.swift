@@ -169,8 +169,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             CLGeocoder().reverseGeocodeLocation(park.location!, completionHandler: {(placemarks, error) -> Void in
                 
                 if placemarks!.count > 0 {
-                    let pm = placemarks![0] 
-                    park.address = pm.locality
+                    let pm = placemarks!.last
+                    park.address = pm!.locality
                 }
             
             })
