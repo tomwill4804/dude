@@ -29,7 +29,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         //  annotate the last saved pin
         //
         if let park = parks.last {
-            let pin = MapPin(coordinate: park.location.coordinate, title: park.name, subtitle: park.description)
+            let pin = MapPin(coordinate: park.location.coordinate, title: park.name, subtitle: park.desc)
             mapView.addAnnotation(pin)
         }
 
@@ -142,7 +142,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             //
             //  mark the spot on the map
             //
-            let pin = MapPin(coordinate: park.location.coordinate, title: park.name, subtitle: park.description)
+            let pin = MapPin(coordinate: park.location.coordinate, title: park.name, subtitle: park.desc)
             mapView.addAnnotation(pin)
             
             
