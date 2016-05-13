@@ -14,6 +14,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
     private var manager : CLLocationManager!
+    private var lastLocation : CLLocation?
     
     //
     //  initial setup
@@ -55,12 +56,16 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     //
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        let location = locations.last
-        
-        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        
-        mapView.setRegion(region, animated: true)
+        if lastLocation == nil {
+           
+            let location = locations.last
+            lastLocation = location
+            
+            let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            
+            mapView.setRegion(region, animated: true)
+        }
         
     }
     

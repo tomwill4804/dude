@@ -98,7 +98,7 @@ class WalkViewController: UIViewController,CLLocationManagerDelegate {
     
     
     //
-    //  generate dicection between two points
+    //  generate directions between two points
     //
     func directions(firstLoc : CLLocation, secondLoc : CLLocation) {
         
@@ -130,7 +130,7 @@ class WalkViewController: UIViewController,CLLocationManagerDelegate {
                 
                 let route = response!.routes[0]
                 let distance = route.distance * 0.000621371192;
-                self.textLabel.text = "Walk is \(distance) miles"
+                self.textLabel.text = "Walking distance is \(distance) miles"
                 
                 self.showRoutes(response!)
             }
