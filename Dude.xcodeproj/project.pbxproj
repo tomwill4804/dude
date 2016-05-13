@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E38A72C21CE53553006F7047 /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38A72C11CE53553006F7047 /* MapPin.swift */; };
+		E38A72C41CE55348006F7047 /* ParksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38A72C31CE55348006F7047 /* ParksTableViewController.swift */; };
 		E3C0B9281CE50A3A00379A41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C0B9271CE50A3A00379A41 /* AppDelegate.swift */; };
 		E3C0B92A1CE50A3A00379A41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C0B9291CE50A3A00379A41 /* ViewController.swift */; };
 		E3C0B92D1CE50A3A00379A41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3C0B92B1CE50A3A00379A41 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		E38A72C11CE53553006F7047 /* MapPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
+		E38A72C31CE55348006F7047 /* ParksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParksTableViewController.swift; sourceTree = "<group>"; };
 		E3C0B9241CE50A3A00379A41 /* Dude.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dude.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3C0B9271CE50A3A00379A41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3C0B9291CE50A3A00379A41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,9 +60,10 @@
 		E3C0B9261CE50A3A00379A41 /* Dude */ = {
 			isa = PBXGroup;
 			children = (
-				E3C0B93F1CE5263B00379A41 /* Park.swift */,
-				E3C0B9291CE50A3A00379A41 /* ViewController.swift */,
 				E38A72C11CE53553006F7047 /* MapPin.swift */,
+				E3C0B93F1CE5263B00379A41 /* Park.swift */,
+				E38A72C31CE55348006F7047 /* ParksTableViewController.swift */,
+				E3C0B9291CE50A3A00379A41 /* ViewController.swift */,
 				E3C0B9271CE50A3A00379A41 /* AppDelegate.swift */,
 				E3C0B92B1CE50A3A00379A41 /* Main.storyboard */,
 				E3C0B92E1CE50A3A00379A41 /* Assets.xcassets */,
@@ -145,6 +148,7 @@
 				E3C0B92A1CE50A3A00379A41 /* ViewController.swift in Sources */,
 				E3C0B9401CE5263B00379A41 /* Park.swift in Sources */,
 				E3C0B9281CE50A3A00379A41 /* AppDelegate.swift in Sources */,
+				E38A72C41CE55348006F7047 /* ParksTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,6 +19,9 @@ class Park: NSObject, NSCoding {
         static let locationKey = "location"
     }
     
+    //
+    //  properties
+    //
     var name: String!
     var desc: String!
     var location: CLLocation!

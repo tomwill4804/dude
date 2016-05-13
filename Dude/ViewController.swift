@@ -13,7 +13,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    var manager : CLLocationManager!
+    private var manager : CLLocationManager!
+    private var parks : [Park]!
     
     //
     //  initial setup
@@ -22,8 +23,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         
         super.viewDidLoad()
         
+        self.parks = Array()
         self.currentLocation()
-        
         
         let defaults = NSUserDefaults.standardUserDefaults()
         
@@ -69,9 +70,31 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         
     }
     
+    //
+    //
+    //
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "showParks" {
+            let vc = (segue.destinationViewController as! UINavigationController).topViewController as! ParksTableViewController
+            vc.parks = parks
+        }
+    }
+    
     
     //
-    //  user wants to mark there current location
+    //  back from show parks
+    //
+    @IBAction func unwindParksController(segue:UIStoryboardSegue) {
+        
+ 
+    }
+
+    
+    
+    
+    //
+    //  user wants to mark their current location
     //
     @IBAction func dropPin(sender: AnyObject) {
         
@@ -120,6 +143,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         let data:NSData = NSKeyedArchiver.archivedDataWithRootObject(park)
         
         defaults.setObject(data, forKey: "lastPark")
+        parks.append(park)
         
     }
     
