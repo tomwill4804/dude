@@ -18,6 +18,9 @@ class WalkViewController: UIViewController,CLLocationManagerDelegate {
     private var startLocation : CLLocation?
     var park : Park!
 
+    //
+    //  get current location
+    //
     override func viewDidLoad() {
         
         super.viewDidLoad()
