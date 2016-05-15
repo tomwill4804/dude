@@ -15,6 +15,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
     private var manager : CLLocationManager!
     private var lastLocation : CLLocation?
+    private var lastPark : Park?
     
     //
     //  initial setup
@@ -29,8 +30,9 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         //
         //  annotate the last saved pin
         //
-        if let park = parks.last {
-            self.markOnMap(park)
+        if let lastPark = parks.last {
+            self.lastPark = lastPark
+            self.markOnMap(lastPark)
         }
    
     }
@@ -65,9 +67,32 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             
             mapView.setRegion(region, animated: true)
+            if lastPark != nil {
+                self.zoom(lastLocation!, secondLoc: (lastPark?.location!)!)
+            }
         }
         
     }
+    
+    //
+    //  zoom to two locations on a map
+    //
+    func zoom(firstLoc : CLLocation, secondLoc : CLLocation) {
+        
+        let lat = (firstLoc.coordinate.latitude + secondLoc.coordinate.latitude) / 2
+        
+        let longitude = (firstLoc.coordinate.longitude + secondLoc.coordinate.longitude) / 2
+        
+        
+        let distance = firstLoc.distanceFromLocation(secondLoc)
+        let centerLocation = CLLocation.init(latitude: lat, longitude: longitude)
+        
+        if CLLocationCoordinate2DIsValid(centerLocation.coordinate) {
+            let region = MKCoordinateRegionMakeWithDistance(centerLocation.coordinate, distance, distance)
+            self.mapView.setRegion(region, animated: true)
+        }
+    }
+
     
     //
     //
