@@ -34,6 +34,8 @@ class WalkViewController: UIViewController,CLLocationManagerDelegate {
     
     //
     //  generate directions between two points
+    //  this is called from the mapper object once we get the
+    //  current location
     //
     func directions(firstLoc : CLLocation, secondLoc : CLLocation) {
         
@@ -84,6 +86,7 @@ class WalkViewController: UIViewController,CLLocationManagerDelegate {
             mapView.addOverlay(route.polyline, level: .AboveRoads)
         }
     }
+    
     
     //
     //  draw the line for the map route

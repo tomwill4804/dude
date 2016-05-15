@@ -31,13 +31,16 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             self.lastPark = lastPark
         }
         
+        //
+        //  start the mapper for this view
+        //
         mapper = Mapper(mapView: mapView, lastLocation: lastPark, directions: nil)
         
     }
     
     
     //
-    //
+    //  calling the show parking locations view controller
     //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         

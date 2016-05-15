@@ -21,6 +21,9 @@ class ParksTableViewController: UITableViewController {
 
     }
     
+    //
+    //  show the walking directions
+    //
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "showWalk" {
@@ -42,12 +45,18 @@ class ParksTableViewController: UITableViewController {
         
     }
     
+    //
+    //  one two per parking location
+    //
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return parks.count
         
     }
     
+    //
+    //  build cell for parking location
+    //
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let parkCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ParkCell
@@ -58,12 +67,18 @@ class ParksTableViewController: UITableViewController {
         
     }
     
+    //
+    //  allow edit
+    //
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 
         return true
         
     }
     
+    //
+    //  delete the parking location
+    //
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         if editingStyle == .Delete {

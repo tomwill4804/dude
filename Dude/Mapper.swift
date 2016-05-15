@@ -48,6 +48,9 @@ class Mapper: NSObject,CLLocationManagerDelegate {
     //
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
+        //
+        //  mark the current location on the map
+        //
         if currentLocation == nil {
             
             let location = locations.last
@@ -57,9 +60,19 @@ class Mapper: NSObject,CLLocationManagerDelegate {
             let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             
             mapView.setRegion(region, animated: true)
+            
+            
+            //
+            //  see if we have a previous location we also need to mark on 
+            //  the map
+            //
             if lastLocation != nil {
                 lastLocation?.markOnMap(mapView)
                 self.zoom(currentLocation!, secondLoc: (lastLocation?.location)!)
+                
+                //
+                //  see if we have a function to call to generate the directions
+                //
                 if directions != nil {
                     self.directions!(currentLocation!, (lastLocation?.location)!)
                 }
