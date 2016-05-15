@@ -26,17 +26,12 @@ class ParksTableViewController: UITableViewController {
         if segue.identifier == "showWalk" {
             let vc = segue.destinationViewController as! WalkViewController
             
-            let button = sender as! UIButton
-            let view = button.superview!
-            let cell = view.superview as! ParkCell
-            
-            let indexPath = tableView.indexPathForCell(cell)
-            let park = parks[(indexPath?.row)!]
+            let index = tableView.indexPathForSelectedRow?.row
+            let park = parks[index!]
             vc.park = park
             
         }
     }
-
 
 
     // MARK: - Table View
