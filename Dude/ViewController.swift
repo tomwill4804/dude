@@ -32,7 +32,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         //
         if let lastPark = parks.last {
             self.lastPark = lastPark
-            self.markOnMap(lastPark)
+            lastPark.markOnMap(mapView)
         }
    
     }
@@ -172,7 +172,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             //
             //  mark the spot on the map
             //
-            self.markOnMap(park)
+            park.markOnMap(mapView)
             
             //
             //  take snapshot of map (image)
@@ -209,15 +209,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         }
         
     }
-    
-    func markOnMap(park:Park) {
-    
-        let pin = MapPin(coordinate: park.location!.coordinate, title: park.name, subtitle: park.desc)
-        mapView.addAnnotation(pin)
-    
-    }
-    
- 
 
 
 }

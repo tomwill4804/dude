@@ -61,5 +61,13 @@ class Park: NSObject, NSCoding {
         address = aDecoder.decodeObjectForKey(PropertyKey.addressKey) as? String
         
     }
+    
+    func markOnMap(mapView:MKMapView) {
+        
+        let pin = MapPin(coordinate: self.location!.coordinate, title: self.name, subtitle: self.desc)
+        mapView.addAnnotation(pin)
+        
+    }
+
 
 }
