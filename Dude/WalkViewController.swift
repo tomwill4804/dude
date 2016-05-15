@@ -14,7 +14,7 @@ class WalkViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var textLabel: UILabel!
     
-    private var manager : CLLocationManager!
+    private var mapper : Mapper?
     private var startLocation : CLLocation?
     var park : Park!
 
@@ -26,74 +26,10 @@ class WalkViewController: UIViewController,CLLocationManagerDelegate {
         super.viewDidLoad()
         
         self.title = park.name
-        self.currentLocation()
+        mapper = Mapper(mapView: mapView, lastLocation: park, directions: directions)
 
     }
     
-    
-    //
-    //  get the users current location
-    //
-    func currentLocation(){
-        
-        manager = CLLocationManager()
-        manager.delegate = self
-        manager.requestAlwaysAuthorization()
-        mapView.showsUserLocation = true
-        manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.startUpdatingLocation()
-        
-        //
-        //  add pin for parking location
-        //
-        let pin = MapPin(coordinate: park.location!.coordinate, title: park.name, subtitle: park.desc)
-        mapView.addAnnotation(pin)
-        
-    }
-    
-    
-    //
-    //  update current location on the map
-    //
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        //
-        //  see if we have a new starting location
-        //
-        if startLocation == nil {
-            
-            let location = locations.last
-            startLocation = location
-            
-            let pin = MapPin(coordinate: startLocation!.coordinate, title: "Starting", subtitle: "")
-            mapView.addAnnotation(pin)
-            
-            self.directions(startLocation!, secondLoc: park.location!)
-            self.zoom(startLocation!, secondLoc: park.location!)
-            
-        }
-        
-    }
-    
-    //
-    //  zoom to two locations on a map
-    //
-    func zoom(firstLoc : CLLocation, secondLoc : CLLocation) {
-        
-        let lat = (firstLoc.coordinate.latitude + secondLoc.coordinate.latitude) / 2
-        
-        let longitude = (firstLoc.coordinate.longitude + secondLoc.coordinate.longitude) / 2
-        
-        
-        let distance = firstLoc.distanceFromLocation(secondLoc)
-        let centerLocation = CLLocation.init(latitude: lat, longitude: longitude)
-        
-        if CLLocationCoordinate2DIsValid(centerLocation.coordinate) {
-            let region = MKCoordinateRegionMakeWithDistance(centerLocation.coordinate, distance, distance)
-            self.mapView.setRegion(region, animated: true)
-        }
-    }
-
     
     
     //

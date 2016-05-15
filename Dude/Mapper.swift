@@ -15,15 +15,17 @@ class Mapper: NSObject,CLLocationManagerDelegate {
     private var manager : CLLocationManager
     var currentLocation : CLLocation?
     private var lastLocation : Park?
+    private var directions: ((CLLocation, CLLocation) -> Void)?
     
     
     //
     //  init the object
     //
-    init(mapView:MKMapView, lastLocation: Park?) {
+    init(mapView:MKMapView, lastLocation: Park?, directions: ((CLLocation, CLLocation) -> Void)?) {
         
         self.mapView = mapView
         self.lastLocation = lastLocation
+        self.directions = directions
     
         //
         //  create a location manager
@@ -58,6 +60,9 @@ class Mapper: NSObject,CLLocationManagerDelegate {
             if lastLocation != nil {
                 lastLocation?.markOnMap(mapView)
                 self.zoom(currentLocation!, secondLoc: (lastLocation?.location)!)
+                if directions != nil {
+                    self.directions!(currentLocation!, (lastLocation?.location)!)
+                }
             }
         }
         
