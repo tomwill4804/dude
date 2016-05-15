@@ -13,8 +13,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    private var manager : CLLocationManager!
-    private var lastLocation : CLLocation?
+    private var mapper : Mapper?
     private var lastPark : Park?
     
     //
@@ -25,74 +24,17 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         super.viewDidLoad()
         self.title = "Parking Locations"
         
-        self.currentLocation()
-        
         //
         //  annotate the last saved pin
         //
         if let lastPark = parks.last {
             self.lastPark = lastPark
-            lastPark.markOnMap(mapView)
-        }
-   
-    }
-    
-    
-    //
-    //  get the users current location
-    //
-    func currentLocation(){
-        
-        manager = CLLocationManager()
-        manager.delegate = self
-        manager.requestAlwaysAuthorization()
-        mapView.showsUserLocation = true
-        manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.startUpdatingLocation()
-        
-    }
-    
-    
-    //
-    //  update current location on the map
-    //
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        if lastLocation == nil {
-           
-            let location = locations.last
-            lastLocation = location
-            
-            let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            
-            mapView.setRegion(region, animated: true)
-            if lastPark != nil {
-                self.zoom(lastLocation!, secondLoc: (lastPark?.location!)!)
-            }
         }
         
+        mapper = Mapper(mapView: mapView, lastLocation: lastPark)
+        
     }
     
-    //
-    //  zoom to two locations on a map
-    //
-    func zoom(firstLoc : CLLocation, secondLoc : CLLocation) {
-        
-        let lat = (firstLoc.coordinate.latitude + secondLoc.coordinate.latitude) / 2
-        
-        let longitude = (firstLoc.coordinate.longitude + secondLoc.coordinate.longitude) / 2
-        
-        
-        let distance = firstLoc.distanceFromLocation(secondLoc)
-        let centerLocation = CLLocation.init(latitude: lat, longitude: longitude)
-        
-        if CLLocationCoordinate2DIsValid(centerLocation.coordinate) {
-            let region = MKCoordinateRegionMakeWithDistance(centerLocation.coordinate, distance, distance)
-            self.mapView.setRegion(region, animated: true)
-        }
-    }
-
     
     //
     //
@@ -101,7 +43,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         
         if segue.identifier == "showParks" {
             let vc = segue.destinationViewController as! ParksTableViewController
-            vc.startLocation = lastLocation
+            vc.startLocation = mapper!.currentLocation
         }
     }
     
