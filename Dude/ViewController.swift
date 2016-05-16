@@ -34,7 +34,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         //
         //  start the mapper for this view
         //
-        mapper = Mapper(mapView: mapView, lastLocation: lastPark, directions: nil)
+        mapper = Mapper(mapView: mapView, lastLocation: lastPark, gotLocation: nil)
         
     }
     

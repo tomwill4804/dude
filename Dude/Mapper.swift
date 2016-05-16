@@ -15,17 +15,17 @@ class Mapper: NSObject,CLLocationManagerDelegate {
     private var manager : CLLocationManager
     var currentLocation : CLLocation?
     private var lastLocation : Park?
-    private var directions: ((CLLocation, CLLocation) -> Void)?
+    private var gotLocation: ((CLLocation) -> Void)?
     
     
     //
     //  init the object
     //
-    init(mapView:MKMapView, lastLocation: Park?, directions: ((CLLocation, CLLocation) -> Void)?) {
+    init(mapView:MKMapView, lastLocation: Park?, gotLocation: ((CLLocation) -> Void)?) {
         
         self.mapView = mapView
         self.lastLocation = lastLocation
-        self.directions = directions
+        self.gotLocation = gotLocation
     
         //
         //  create a location manager
@@ -73,8 +73,8 @@ class Mapper: NSObject,CLLocationManagerDelegate {
                 //
                 //  see if we have a function to call to generate the directions
                 //
-                if directions != nil {
-                    self.directions!(currentLocation!, (lastLocation?.location)!)
+                if gotLocation != nil {
+                    self.gotLocation!(currentLocation!)
                 }
             }
         }

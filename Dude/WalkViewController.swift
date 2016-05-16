@@ -26,8 +26,14 @@ class WalkViewController: UIViewController,CLLocationManagerDelegate {
         super.viewDidLoad()
         
         self.title = park.name
-        mapper = Mapper(mapView: mapView, lastLocation: park, directions: directions)
+        mapper = Mapper(mapView: mapView, lastLocation: park, gotLocation: gotLocation)
 
+    }
+    
+    func gotLocation(firstloc: CLLocation) {
+        
+        self.directions(firstloc, secondLoc: park.location!)
+    
     }
     
     
