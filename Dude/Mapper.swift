@@ -71,7 +71,7 @@ class Mapper: NSObject,CLLocationManagerDelegate {
                 self.zoom(currentLocation!, secondLoc: (lastLocation?.location)!)
                 
                 //
-                //  see if we have a function to call to generate the directions
+                //  let the caller know we have a new current location
                 //
                 if gotLocation != nil {
                     self.gotLocation!(currentLocation!)
