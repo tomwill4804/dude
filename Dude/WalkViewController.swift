@@ -72,7 +72,8 @@ class WalkViewController: UIViewController,CLLocationManagerDelegate {
             } else {
                 
                 let route = response!.routes[0]
-                let distance = route.distance * 0.000621371192;
+                var distance = route.distance * 0.000621371192;
+                distance = round(100*distance/100)
                 self.textLabel.text = "Walking distance is \(distance) miles"
                 
                 self.showRoutes(response!)

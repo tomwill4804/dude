@@ -36,9 +36,9 @@ class ParkCell: UITableViewCell {
         
         if (startLocation != nil && park.location != nil) {
             let distanceMeters = startLocation!.distanceFromLocation(park.location!)
-            var distanceKM = distanceMeters / 1000
-            distanceKM = round(100*distanceKM/100)
-            distanceLabel.text = "\(distanceKM) KM away"
+            var distance = distanceMeters * 0.000621371192;
+            distance = round(100*distance/100)
+            distanceLabel.text = "\(distance) miles away"
             
         }
         

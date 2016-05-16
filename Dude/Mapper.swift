@@ -11,7 +11,7 @@ import MapKit
 
 class Mapper: NSObject,CLLocationManagerDelegate {
     
-    var mapView : MKMapView
+    private var mapView : MKMapView
     private var manager : CLLocationManager
     var currentLocation : CLLocation?
     private var lastLocation : Park?
